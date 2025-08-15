@@ -1,6 +1,26 @@
 Togbox.elements = [];
 
 function Togbox(options = {}) {
+    if (!options.content && !options.templateId) {
+        console.error("You must provide one of 'content' or 'templateId'.");
+        return;
+    }
+
+    if (options.content && options.templateId) {
+        options.templateId = null;
+        console.warn(
+            "Both 'content' and 'templateId' are specified. 'content' will take precedence, and 'templateId' will be ignored."
+        );
+    }
+
+    if (options.templateId) {
+        this.template = document.querySelector(`#${options.templateId}`);
+        if (!this.template) {
+            console.error(`#${options.templateId} does not exist!`);
+            return;
+        }
+    }
+
     this.opt = Object.assign(
         {
             closeMethods: ["button", "overlay", "escape"],
@@ -11,19 +31,13 @@ function Togbox(options = {}) {
         options
     );
 
-    this.template = document.querySelector(`#${this.opt.templateId}`);
-
+    this.content = this.opt.content;
     const { closeMethods } = this.opt;
     this._allowButtonClose = closeMethods.includes("button");
     this._allowBackdropClose = closeMethods.includes("overlay");
     this._allowEscapeClose = closeMethods.includes("escape");
 
     this._footerButtons = [];
-
-    if (!this.template) {
-        console.error(`#${this.opt.templateId} does not exist!`);
-        return;
-    }
 
     this._handleEscapeKey = this._handleEscapeKey.bind(this);
 }
@@ -47,7 +61,15 @@ Togbox.prototype._getScrollbarWidth = function () {
 };
 
 Togbox.prototype._build = function () {
-    const content = this.template.content.cloneNode(true);
+    // const content = this.template.content.cloneNode(true);
+
+    const contentNode = this.content
+        ? document.createElement("div")
+        : this.template.content.cloneNode(true);
+
+    if (this.content) {
+        contentNode.innerHTML = this.content;
+    }
 
     // Create modal elements
     this._backdrop = document.createElement("div");
@@ -70,12 +92,12 @@ Togbox.prototype._build = function () {
         container.append(closeBtn);
     }
 
-    const modalContent = document.createElement("div");
-    modalContent.className = "togbox__content";
+    this._modalContent = document.createElement("div");
+    this._modalContent.className = "togbox__content";
 
     // Append content and elements
-    modalContent.append(content);
-    container.append(modalContent);
+    this._modalContent.append(contentNode);
+    container.append(this._modalContent);
 
     if (this.opt.footer) {
         this._modalFooter = document.createElement("div");
@@ -90,6 +112,14 @@ Togbox.prototype._build = function () {
 
     this._backdrop.append(container);
     document.body.append(this._backdrop);
+};
+
+Togbox.prototype.setContent = function (content) {
+    this.content = content;
+
+    if (this._modalContent) {
+        this._modalContent.innerHTML = this.content;
+    }
 };
 
 Togbox.prototype.setFooterContent = function (html) {
@@ -171,7 +201,9 @@ Togbox.prototype._handleEscapeKey = function (e) {
 Togbox.prototype._onTransitionEnd = function (callback) {
     this._backdrop.ontransitionend = (e) => {
         if (e.propertyName !== "transform") return;
-        callback();
+        if (typeof callback === "function") {
+            callback();
+        }
     };
 };
 

@@ -42,6 +42,8 @@
         <!-- Style CSS -->
         <link rel="stylesheet" href="./assets/css/style.css" />
 
+        <link rel="stylesheet" href="./src/togbox.css" />
+
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css"
@@ -456,7 +458,17 @@ modal.close();</code>
                 </div>
             </div>
         </footer>
+        <template id="modal-1">
+            <h1>Hello anh em</h1>
+        </template>
         <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+        <script src="./src/togbox.js"></script>
+        <script>
+            const modal1 = new Togbox({
+                content: "<h1>Hello</h1>",
+                templateId: "modal-1",
+            });
+        </script>
     </body>
 </html>
