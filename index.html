@@ -3,7 +3,460 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Togbox</title>
+        <title>Togbox.js - A 2kB Vanilla JavaScript Modal Library</title>
+        <meta
+            name="description"
+            content="Togbox is a lightweight, dependency-free JavaScript modal library. Fully customizable with CSS and easy to integrate into any web project."
+        />
+        <!-- Favicon -->
+        <link
+            rel="icon"
+            type="image/png"
+            href="./assets/favicon/favicon-96x96.png"
+            sizes="96x96"
+        />
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="./assets/favicon/favicon.svg"
+        />
+        <link rel="shortcut icon" href="./assets/favicon/favicon.ico" />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./assets/favicon/apple-touch-icon.png"
+        />
+        <link rel="manifest" href="./assets/favicon/site.webmanifest" />
+
+        <!-- Embed Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Reset CSS -->
+        <link rel="stylesheet" href="./assets/css/reset.css" />
+
+        <!-- Style CSS -->
+        <link rel="stylesheet" href="./assets/css/style.css" />
+
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css"
+        />
     </head>
-    <body></body>
+    <body>
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <h1 class="header__title">Togbox.js</h1>
+                <p class="header__desc">
+                    A lightweight and simple modal library built with pure
+                    JavaScript.
+                </p>
+                <a
+                    href="https://github.com/KhoiNguyen-265/togbox-lib"
+                    class="header__github"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    <img src="./assets/icons/github.svg" alt="View on github" />
+                </a>
+            </div>
+        </header>
+
+        <!-- Main -->
+        <main>
+            <div class="container">
+                <div class="table-content">
+                    <ol>
+                        <li><a href="#try-it-out">1. Try It Out</a></li>
+                        <li><a href="#installation">2. Installation</a></li>
+                        <li><a href="#usage">3. Usage</a></li>
+                        <li><a href="#options">4. Options</a></li>
+                        <li><a href="#styling">5. Styling</a></li>
+                        <li><a href="#api">6. API</a></li>
+                    </ol>
+                </div>
+                <!-- 1. Try It Out -->
+                <h2 id="try-it-out" data-bullet="1. " class="title">
+                    Try It Out
+                </h2>
+                <p>
+                    Togbox is a lightweight <strong>modal library</strong> built
+                    with pure JavaScript. (<a
+                        href="https://github.com/KhoiNguyen-265/togbox-lib"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Source code available on GitHub </a
+                    >)
+                </p>
+
+                <ul>
+                    <li>No dependencies</li>
+                    <li>Fully customizable with CSS</li>
+                    <li>Supports CSS transitions</li>
+                    <li>Simple and intuitive API</li>
+                    <li>No extra files needed</li>
+                    <li>Optimized for user experience</li>
+                </ul>
+
+                <p>Here are some examples of how to use Togbox:</p>
+
+                <div class="btn-wrapper">
+                    <button class="btn">Basic Modal</button>
+                    <button class="btn">Modal with Buttons</button>
+                    <button class="btn">Large Content Modal</button>
+                    <button class="btn">Footer-Only Close Modal</button>
+                    <button class="btn">Persistent Modal (Stays in DOM)</button>
+                    <button class="btn">Multiple Modals</button>
+                    <button class="btn">YouTube Embed Modal</button>
+                </div>
+
+                <!-- 2. Installation -->
+                <h2 id="installation" data-bullet="2. " class="title">
+                    Installation
+                </h2>
+                <table class="methods">
+                    <thead>
+                        <th>Method</th>
+                        <th class="w60">Steps</th>
+                        <tr>
+                            <td>Direct Download</td>
+                            <td>
+                                <a
+                                    href="https://github.com/KhoiNguyen-265/togbox-lib/archive/refs/heads/main.zip"
+                                    title="Download Togbox"
+                                >
+                                    Download ZIP
+                                </a>
+                                <p>
+                                    Simply extract the ZIP file and use the
+                                    <code class="hl-code">togbox.min.js</code>
+                                    and
+                                    <code class="hl-code">togbox.min.css</code>
+                                    files in your project.
+                                </p>
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
+
+                <p>
+                    Togbox provides a small CSS file that you can include
+                    directly via a CDN link. This makes it easy to integrate
+                    into your project and customize as needed.
+                </p>
+
+                <p>Include the Togbox JavaScript file in your project:</p>
+
+                <pre>
+                    <code class="language-html">
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/KhoiNguyen-265/togbox-lib/togbox.min.js&quot;&gt;&lt;/script&gt;</code>
+                </pre>
+
+                <p>
+                    Optionally, include the Togbox CSS file for default styling:
+                </p>
+                <pre class="language-html">
+                    <code>
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/KhoiNguyen-265/togbox-lib/togbox.min.css&quot;&gt;</code>
+                </pre>
+
+                <p>
+                    You can explore the list of CSS classes used by Togbox in
+                    the
+                    <a href="#styling">Styling</a> section to easily customize
+                    them as needed.
+                </p>
+
+                <!-- 3.Usage -->
+                <h2 data-bullet="3. " class="title" id="usage">Usage</h2>
+                <pre>
+                    <code class="language-js">
+// Initialize a new modal
+const modal = new Togbox({
+    content: &apos;&lt;h1&gt;This is content&lt;/h1&gt;&apos;,
+    // templateId: &apos;my-modal-template&apos;,
+    footer: true,
+    destroyOnClose: false,
+    closeMethods: [&apos;overlay&apos;, &apos;button&apos;, &apos;escape&apos;],
+    cssClass: [&apos;custom-class-1&apos;, &apos;custom-class-2&apos;],
+    onOpen: function() {
+        console.log(&apos;Modal opened&apos;);
+    },
+    onClose: function() {
+        console.log(&apos;Modal closed&apos;);
+    },
+});
+
+// Set modal content
+modal.setContent(&apos;&lt;h1&gt;This is new content&lt;/h1&gt;&apos;);
+
+// Add footer buttons
+modal.addFooterBtn(&apos;Cancel&apos;, &apos;btn btn--default&apos;, function(e) {
+    modal.close();
+});
+
+modal.addFooterBtn(&apos;Confirm&apos;, &apos;btn btn--primary&apos;, function(e) {
+    modal.close();
+});
+
+// Open the modal
+modal.open();
+
+// Close the modal
+modal.close();</code>
+                </pre>
+
+                <p>
+                    If you use <code>templateId</code>, ensure that a
+                    <code>&lt;template&gt;</code> element with the corresponding
+                    <code>id</code> exists in your HTML. Below is an example:
+                </p>
+
+                <pre class="language-html">
+<code>&lt;template id="my-modal-template"&gt;
+    &lt;div&gt;
+        &lt;h1&gt;This is modal content&lt;/h1&gt;
+        &lt;p&gt;You can add any HTML here.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/template&gt;</code>
+</pre>
+                <p>
+                    <strong>Note:</strong> When using <code>templateId</code>,
+                    do not provide <code>content</code>. If both are specified,
+                    <code>content</code> will take precedence, and
+                    <code>templateId</code> will be ignored.
+                </p>
+
+                <!-- 4. Options -->
+                <h2 data-bullet="4. " class="title" id="options">Options</h2>
+                <table>
+                    <thead>
+                        <th>Option</th>
+                        <th>Type</th>
+                        <th class="w60">Description</th>
+                    </thead>
+                    <tr>
+                        <td>content, templateId</td>
+                        <td>string</td>
+                        <td>
+                            One of <code class="hl-code">content</code> or
+                            <code class="hl-code">templateId</code> is required
+                            to set the modal content.
+                            <code class="hl-code">content</code> accepts an HTML
+                            string, while
+                            <code class="hl-code">templateId</code> specifies
+                            the ID of a template element. If both are provided,
+                            <code class="hl-code">content</code> will take
+                            precedence.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>footer</td>
+                        <td>boolean</td>
+                        <td>
+                            Shows a footer in the modal (default:
+                            <code class="hl-code">false</code>)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>destroyOnClose</td>
+                        <td>boolean</td>
+                        <td>
+                            Decides whether the modal is removed from the DOM
+                            upon closing (default:
+                            <code class="hl-code">true</code>)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>closeMethods</td>
+                        <td>array</td>
+                        <td>
+                            Defines methods to close the modal (default:
+                            <code class="hl-code"
+                                >['overlay', 'button', 'escape']</code
+                            >)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>onOpen</td>
+                        <td>function</td>
+                        <td>
+                            Callback function executed when the modal opens
+                            (after transition ends) (default:
+                            <code class="hl-code">undefined</code>)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>onClose</td>
+                        <td>function</td>
+                        <td>
+                            Callback function executed when the modal closes
+                            (default: <code class="hl-code">undefined</code>)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>cssClass</td>
+                        <td>array</td>
+                        <td>
+                            Custom CSS classes applied to the modal container
+                            (default: <code class="hl-code">[]</code>)
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- Styling section -->
+                <h2 data-bullet="5. " class="title" id="styling">Styling</h2>
+                <p>
+                    Togbox styles are defined in CSS, with some positioning
+                    handled by JavaScript. You can fully customize it to meet
+                    your design requirements.
+                </p>
+
+                <table class="methods">
+                    <thead>
+                        <tr>
+                            <th>Class Name</th>
+                            <th style="width: 70%">Description/Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code class="hl-code">.togbox</code></td>
+                            <td>
+                                Styles the backdrop overlay for the modal.
+                                Handles positioning, centering the modal, and
+                                applying a semi-transparent background.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code class="hl-code">.togbox--show</code></td>
+                            <td>
+                                Applied when the modal is visible. Controls the
+                                visibility and opacity of the backdrop.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code class="hl-code">.togbox__container</code>
+                            </td>
+                            <td>
+                                Styles the modal container, including its size,
+                                padding, border-radius, and transform animations
+                                for scaling in/out.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code class="hl-code">.togbox__close</code></td>
+                            <td>
+                                Styles the close button inside the modal,
+                                including its size, position, and hover effects.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code class="hl-code">.togbox__content</code>
+                            </td>
+                            <td>
+                                Handles the modal's main content area, including
+                                scrollable behavior with a maximum height.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code class="hl-code">.togbox__footer</code>
+                            </td>
+                            <td>
+                                Styles the modal footer, aligning buttons to the
+                                right and adding spacing between them.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code class="hl-code">.togbox--no-scroll</code>
+                            </td>
+                            <td>
+                                Disables scrolling on the body when the modal is
+                                open.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>
+                    For more details, you can view the full CSS file directly
+                    here:
+                    <a
+                        href="https://cdn.jsdelivr.net/gh/KhoiNguyen-265/togbox-lib/togbox.css"
+                        target="_blank"
+                        rel="noopener"
+                        >togbox.css</a
+                    >.
+                </p>
+
+                <!-- API section -->
+                <h2 data-bullet="6. " class="title" id="api">API</h2>
+                <table class="methods">
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th class="w60">Description</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>open()</td>
+                        <td>
+                            Opens the modal and triggers the
+                            <code class="hl-code">onOpen</code> callback.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>close()</td>
+                        <td>
+                            Closes the modal and triggers the
+                            <code class="hl-code">onClose</code> callback.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>setContent(content)</td>
+                        <td>Updates the modal content</td>
+                    </tr>
+                    <tr>
+                        <td>setFooterContent(content)</td>
+                        <td>Updates the footer content</td>
+                    </tr>
+                    <tr>
+                        <td>addFooterBtn(label, cssClass, callback)</td>
+                        <td>
+                            Adds a button to the footer with a callback function
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>destroy()</td>
+                        <td>Removes the modal and unbinds all events</td>
+                    </tr>
+                </table>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__section">
+                    <p>
+                        This is a small project included in the "Practice with
+                        DOM" section of the JavaScript Pro course.
+                    </p>
+                    <p>&copy; 2025 Togbox.js. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
 </html>

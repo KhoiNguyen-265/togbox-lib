@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "minify": "terser togbox.js -o togbox.min.js && csso togbox.css -o togbox.min.css"
+        "minify": "terser src/togbox.js -o togbox.min.js && csso src/togbox.css -o togbox.min.css"
     },
     "dependencies": {
         "csso-cli": "^4.0.2",
