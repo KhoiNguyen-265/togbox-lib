@@ -169,7 +169,7 @@
 
                 <pre>
                     <code class="language-html">
-&lt;script src=&quot;https://cdn.jsdelivr.net/gh/KhoiNguyen-265/togbox-lib/togbox.min.js&quot;&gt;&lt;/script&gt;</code>
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/KhoiNguyen-265/togbox-lib@v1.0.1/togbox.min.js&quot;&gt;&lt;/script&gt;</code>
                 </pre>
 
                 <p>
@@ -177,7 +177,7 @@
                 </p>
                 <pre class="language-html">
                     <code>
-&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/KhoiNguyen-265/togbox-lib/togbox.min.css&quot;&gt;</code>
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/KhoiNguyen-265/togbox-lib@v1.0.1/togbox.min.css&quot;&gt;</code>
                 </pre>
 
                 <p>
@@ -427,7 +427,7 @@ modal.close();</code>
                     For more details, you can view the full CSS file directly
                     here:
                     <a
-                        href="https://cdn.jsdelivr.net/gh/KhoiNguyen-265/togbox-lib/togbox.css"
+                        href="https://cdn.jsdelivr.net/gh/KhoiNguyen-265/togbox-lib@v1.0.1/togbox.css"
                         target="_blank"
                         rel="noopener"
                         >togbox.css</a
@@ -595,6 +595,16 @@ modal.close();</code>
             });
             modal6Btn.onclick = function () {
                 modal6.open();
+            };
+
+            // Youtube Embed Modal
+            const modal7Btn = document.querySelector(".js-togbox-modal-7");
+            const modal7 = new Togbox({
+                content: `<iframe width="560" height="315" src="https://www.youtube.com/embed/aTE_xWTcNuA?si=IuHmL4tAtLMeILTz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+                destroyOnClose: false,
+            });
+            modal7Btn.onclick = function () {
+                modal7.open();
             };
         </script>
     </body>
