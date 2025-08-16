@@ -15,8 +15,6 @@ html {
 
 body {
     font-family: "Poppins", sans-serif;
-    font-size: 1.6em;
-    line-height: 1.5;
 }
 
 p,
@@ -49,6 +47,7 @@ ul {
 
 pre {
     width: 100%;
+    font-size: clamp(1.2rem, 2vw, 1.8rem) !important;
 }
 
 a:hover {
@@ -96,7 +95,7 @@ td {
 .container {
     margin-right: auto;
     margin-left: auto;
-    max-width: 70em;
+    width: 70%;
 }
 
 .btn {
@@ -196,4 +195,33 @@ td {
 }
 .footer__section {
     text-align: center;
+}
+
+/* Responsive */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .btn-wrapper {
+        grid-template-columns: auto auto;
+    }
+}
+
+@media (max-width: 767.98px) {
+    main {
+        padding: 40px 15px;
+    }
+
+    .title {
+        margin-left: 0;
+    }
+
+    .container {
+        width: 100%;
+    }
+    .btn-wrapper {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .btn {
+        padding: 20px;
+    }
 }

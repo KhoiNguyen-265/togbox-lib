@@ -109,7 +109,7 @@
                 <p>Here are some examples of how to use Togbox:</p>
 
                 <div class="btn-wrapper">
-                    <button class="btn">Basic Modal</button>
+                    <button id="open-modal-1" class="btn">Basic Modal</button>
                     <button class="btn">Modal with Buttons</button>
                     <button class="btn">Large Content Modal</button>
                     <button class="btn">Footer-Only Close Modal</button>
@@ -466,9 +466,14 @@ modal.close();</code>
         <script src="./src/togbox.js"></script>
         <script>
             const modal1 = new Togbox({
+                enableScrollLock: true,
                 content: "<h1>Hello</h1>",
                 templateId: "modal-1",
             });
+
+            document.querySelector("#open-modal-1").onclick = function () {
+                modal1.open();
+            };
         </script>
     </body>
 </html>

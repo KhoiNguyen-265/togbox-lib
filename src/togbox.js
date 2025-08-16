@@ -23,10 +23,12 @@ function Togbox(options = {}) {
 
     this.opt = Object.assign(
         {
+            enableScrollLock: true,
             closeMethods: ["button", "overlay", "escape"],
             footer: false,
             destroyOnClose: true,
             cssClass: [],
+            scrollLockTarget: () => document.body,
         },
         options
     );
@@ -61,8 +63,6 @@ Togbox.prototype._getScrollbarWidth = function () {
 };
 
 Togbox.prototype._build = function () {
-    // const content = this.template.content.cloneNode(true);
-
     const contentNode = this.content
         ? document.createElement("div")
         : this.template.content.cloneNode(true);
@@ -169,8 +169,19 @@ Togbox.prototype.open = function () {
     }, 0);
 
     // Disable scrolling
-    document.body.classList.add("togbox--no-scroll");
-    document.body.style.paddingRight = this._getScrollbarWidth() + "px";
+    if (this.opt.enableScrollLock) {
+        const target = this.opt.scrollLockTarget();
+
+        if (this._hasScrollBar(target)) {
+            target.classList.add("togbox--no-scroll");
+
+            const targetPadRight = parseInt(
+                getComputedStyle(target).paddingRight
+            );
+            target.style.paddingRight =
+                targetPadRight + this._getScrollbarWidth() + "px";
+        }
+    }
 
     // Attach event listeners
     if (this._allowBackdropClose) {
@@ -196,6 +207,10 @@ Togbox.prototype._handleEscapeKey = function (e) {
     if (e.key === "Escape" && this === lastModal) {
         this.close();
     }
+};
+
+Togbox.prototype._hasScrollBar = function (target) {
+    return target.scrollHeight > target.clientHeight;
 };
 
 Togbox.prototype._onTransitionEnd = function (callback) {
@@ -224,9 +239,13 @@ Togbox.prototype.close = function (destroy = this.opt.destroyOnClose) {
         }
 
         // Enable scrolling
-        if (!Togbox.elements.length) {
-            document.body.classList.remove("togbox--no-scroll");
-            document.body.style.paddingRight = "";
+        if (this.opt.enableScrollLock && !Togbox.elements.length) {
+            const target = this.opt.scrollLockTarget();
+
+            if (this._hasScrollBar(target)) {
+                target.classList.remove("togbox--no-scroll");
+                target.style.paddingRight = "";
+            }
         }
 
         if (typeof this.opt.onClose === "function") {
