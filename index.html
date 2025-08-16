@@ -286,6 +286,27 @@ modal.close();</code>
                         </td>
                     </tr>
                     <tr>
+                        <td>enableScrollLock</td>
+                        <td>boolean</td>
+                        <td>
+                            Enables or disables scroll locking when the modal is
+                            open. When set to
+                            <code>true</code>, it prevents scrolling on the
+                            target element specified by
+                            <code>scrollLockTarget</code>. Default:
+                            <code>true</code>.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>scrollLockTarget</td>
+                        <td>function</td>
+                        <td>
+                            A callback that returns the element to apply scroll
+                            locking on. By default, it locks scrolling on
+                            <code>document.body</code>.
+                        </td>
+                    </tr>
+                    <tr>
                         <td>onOpen</td>
                         <td>function</td>
                         <td>
