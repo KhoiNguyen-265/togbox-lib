@@ -165,17 +165,17 @@ Togbox.prototype.open = function () {
     }
 
     setTimeout(() => {
-        this._backdrop.classList.add("togbox__backdrop--show");
+        this._backdrop.classList.add("togbox--show");
     }, 0);
 
     // Disable scrolling
-    if (this.opt.enableScrollLock) {
+    if (Togbox.elements.length === 1 && this.opt.enableScrollLock) {
         const target = this.opt.scrollLockTarget();
 
         if (this._hasScrollBar(target)) {
             target.classList.add("togbox--no-scroll");
 
-            const targetPadRight = parseInt(
+            const targetPadRight = parseFloat(
                 getComputedStyle(target).paddingRight
             );
             target.style.paddingRight =
@@ -233,14 +233,14 @@ Togbox.prototype._onTransitionEnd = function (callback) {
 Togbox.prototype.close = function (destroy = this.opt.destroyOnClose) {
     Togbox.elements.pop();
 
-    this._backdrop.classList.remove("togbox__backdrop--show");
+    this._backdrop.classList.remove("togbox--show");
 
     if (this._allowEscapeClose) {
         document.removeEventListener("keydown", this._handleEscapeKey);
     }
 
     this._onTransitionEnd(() => {
-        if (destroy) {
+        if (this._backdrop && destroy) {
             this._backdrop.remove();
             this._backdrop = null;
             this._modalFooter = null;

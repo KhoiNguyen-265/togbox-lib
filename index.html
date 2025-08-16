@@ -109,13 +109,25 @@
                 <p>Here are some examples of how to use Togbox:</p>
 
                 <div class="btn-wrapper">
-                    <button id="open-modal-1" class="btn">Basic Modal</button>
-                    <button class="btn">Modal with Buttons</button>
-                    <button class="btn">Large Content Modal</button>
-                    <button class="btn">Footer-Only Close Modal</button>
-                    <button class="btn">Persistent Modal (Stays in DOM)</button>
-                    <button class="btn">Multiple Modals</button>
-                    <button class="btn">YouTube Embed Modal</button>
+                    <button class="btn js-togbox-modal-1">Basic Modal</button>
+                    <button class="btn js-togbox-modal-2">
+                        Modal with Buttons
+                    </button>
+                    <button class="btn js-togbox-modal-3">
+                        Large Content Modal
+                    </button>
+                    <button class="btn js-togbox-modal-4">
+                        Footer-Only Close Modal
+                    </button>
+                    <button class="btn js-togbox-modal-5">
+                        Persistent Modal (Stays in DOM)
+                    </button>
+                    <button class="btn js-togbox-modal-6">
+                        Multiple Modals
+                    </button>
+                    <button class="btn js-togbox-modal-7">
+                        YouTube Embed Modal
+                    </button>
                 </div>
 
                 <!-- 2. Installation -->
@@ -486,14 +498,103 @@ modal.close();</code>
         <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
         <script src="./src/togbox.js"></script>
         <script>
+            // Basic Modal
+            const modal1Btn = document.querySelector(".js-togbox-modal-1");
             const modal1 = new Togbox({
-                enableScrollLock: true,
-                content: "<h1>Hello</h1>",
-                templateId: "modal-1",
+                content: `<h1>Basic Modal</h1>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, inventore harum aut fugit deleniti ipsam. Blanditiis expedita fugit facere officia.</p>`,
+                footer: false,
             });
-
-            document.querySelector("#open-modal-1").onclick = function () {
+            modal1Btn.onclick = function () {
                 modal1.open();
+            };
+
+            // Modal with Buttons
+            const modal2Btn = document.querySelector(".js-togbox-modal-2");
+            const modal2 = new Togbox({
+                content: `<h1>Modal with Buttons</h1>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, inventore harum aut fugit deleniti ipsam. Blanditiis expedita fugit facere officia.</p>`,
+                footer: true,
+            });
+            modal2.addFooterButton(
+                "Danger",
+                "modal-btn btn--danger btn--pull-left",
+                () => {
+                    modal2.close();
+                }
+            );
+            modal2.addFooterButton("Cancel", "modal-btn btn--cancel", () => {
+                modal2.close();
+            });
+            modal2.addFooterButton("Agree", "modal-btn btn--agree", () => {
+                modal2.close();
+            });
+            modal2Btn.onclick = function () {
+                modal2.open();
+            };
+
+            // Large Content Modal
+            const modal3Btn = document.querySelector(".js-togbox-modal-3");
+            const modal3 = new Togbox({
+                content: `<h1>Large Content Modal</h1>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, inventore harum aut fugit deleniti ipsam. Blanditiis expedita fugit facere officia.</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, inventore harum aut fugit deleniti ipsam. Blanditiis expedita fugit facere officia.</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, inventore harum aut fugit deleniti ipsam. Blanditiis expedita fugit facere officia.</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, inventore harum aut fugit deleniti ipsam. Blanditiis expedita fugit facere officia.</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, inventore harum aut fugit deleniti ipsam. Blanditiis expedita fugit facere officia.</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, inventore harum aut fugit deleniti ipsam. Blanditiis expedita fugit facere officia.</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, inventore harum aut fugit deleniti ipsam. Blanditiis expedita fugit facere officia.</p>
+                `,
+            });
+            modal3Btn.onclick = function () {
+                modal3.open();
+            };
+
+            // Footer-Only Close Modal
+            const modal4Btn = document.querySelector(".js-togbox-modal-4");
+            const modal4 = new Togbox({
+                content: `<h1>Footer-Only Close Modal</h1>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, inventore harum aut fugit deleniti ipsam. Blanditiis expedita fugit facere officia.</p>`,
+                footer: true,
+                closeMethods: [],
+            });
+            modal4.addFooterButton(
+                "Danger",
+                "modal-btn btn--danger btn--pull-left",
+                () => {
+                    modal4.close();
+                }
+            );
+            modal4.addFooterButton("Cancel", "modal-btn btn--cancel", () => {
+                modal4.close();
+            });
+            modal4.addFooterButton("Agree", "modal-btn btn--agree", () => {
+                modal4.close();
+            });
+            modal4Btn.onclick = function () {
+                modal4.open();
+            };
+
+            // Persistent Modal (Stays in DOM)
+            const modal5Btn = document.querySelector(".js-togbox-modal-5");
+            const modal5 = new Togbox({
+                content: `<h1>Persistent Modal (Stays in DOM)</h1>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, inventore harum aut fugit deleniti ipsam. Blanditiis expedita fugit facere officia.</p>`,
+                destroyOnClose: false,
+            });
+            modal5Btn.onclick = function () {
+                modal5.open();
+            };
+
+            // Multiple Modals
+            const modal6Btn = document.querySelector(".js-togbox-modal-6");
+            const modal6 = new Togbox({
+                content: `<h1>Multiple Modals</h1>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, inventore harum aut fugit deleniti ipsam. Blanditiis expedita fugit facere officia.</p>
+                <button class="btn" onclick="modal1.open()">Open Basic Modal</button>`,
+            });
+            modal6Btn.onclick = function () {
+                modal6.open();
             };
         </script>
     </body>

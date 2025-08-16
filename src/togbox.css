@@ -11,12 +11,12 @@
     transition-duration: 0.5s;
 }
 
-.togbox__backdrop--show {
+.togbox--show {
     opacity: 1;
     visibility: visible;
 }
 
-.togbox__backdrop--show .togbox__container {
+.togbox--show .togbox__container {
     transform: scale(1);
 }
 
