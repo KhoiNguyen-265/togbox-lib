@@ -197,6 +197,7 @@ td {
 
 .header__title {
     font-size: clamp(2.4rem, 5vw, 5.2rem);
+    line-height: 1.2;
     font-weight: 700;
     background: linear-gradient(
         to bottom,
